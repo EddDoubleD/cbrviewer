@@ -40,7 +40,7 @@ public class CurrencyService {
                 .build();
         // Определяем результирующую выборку
         final List<Valuta.Item> currency = new ArrayList<>();
-        HttpUtils.get(get, response -> {
+        HttpUtils.execute(get, response -> {
             try {
                 Valuta valuta = XMLParser.deserialize(response.getEntity().getContent(), Valuta.class);
                 if (valuta != null) {

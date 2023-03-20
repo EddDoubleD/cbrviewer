@@ -1,5 +1,16 @@
 spring:
   main:
     allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      authentication-database: admin
+      username: rootuser
+      password: rootpass
+      database: orunmila
+      port: 27017
+      host: localhost
 cbr:
+  app:
+    jwtSecret: cbrSecretKey
+    jwtExpirationMs: 86400000
   url: https://cbr.ru

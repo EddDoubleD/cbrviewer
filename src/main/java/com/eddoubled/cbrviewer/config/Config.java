@@ -1,6 +1,7 @@
 package com.eddoubled.cbrviewer.config;
 
 import com.eddoubled.cbrviewer.service.CurrencyService;
+import com.eddoubled.cbrviewer.service.UserDetailsServiceImpl;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

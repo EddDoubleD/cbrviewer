@@ -11,7 +11,7 @@ import java.io.IOException;
 @UtilityClass
 public class HttpUtils {
 
-    public static void get(ClassicHttpRequest request, HttpClientResponseHandler<?> handler) throws IOException {
+    public static void execute(ClassicHttpRequest request, HttpClientResponseHandler<?> handler) throws IOException {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             client.execute(request, handler);
         }

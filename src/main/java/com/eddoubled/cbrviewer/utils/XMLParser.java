@@ -9,6 +9,7 @@ import java.io.InputStream;
 
 @UtilityClass
 public class XMLParser {
+
     public static <T> T deserialize(String xml, Class<T> clazz) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(clazz);
         Object result = context.createUnmarshaller().unmarshal(new File(xml));
