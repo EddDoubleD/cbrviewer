@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Valuta">
+		<xs:annotation>
+			<xs:documentation>Справочник валют</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="Item">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Name" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Название валюты (рус.)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="EngName" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Название валюты (анг.)</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Nominal" type="xs:unsignedInt">
+								<xs:annotation>
+									<xs:documentation>номинал. ед</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ParentCode" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Внутренний уникальный код валюты, которая являлась базовой(предыдущей) для данной валюты</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="ID" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Внутренний уникальный код валюты</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Имя документа</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
