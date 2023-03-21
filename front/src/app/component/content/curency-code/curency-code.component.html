@@ -1,0 +1,58 @@
+<div class="example-header">
+    <mat-form-field *ngIf="!loading">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Поиск">
+      </mat-form-field>
+    </div>
+  
+    
+    
+    <div class="example-container mat-elevation-z8">
+    
+      <mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Код </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Наименование </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+    
+        <!-- English name -->
+        <ng-container matColumnDef="engName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Англоязычное наименование </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+    
+        <!-- Nominal -->
+        <ng-container matColumnDef="nominal">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Номинал </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.nominal}} </mat-cell>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="parentCode">
+          <mat-header-cell *matHeaderCellDef> Код родителя </mat-header-cell>
+          <mat-cell *matCellDef="let row"> 
+            <mat-cell *matCellDef="let row"> {{row.parentCode}} </mat-cell>
+          </mat-cell>
+        </ng-container>
+  
+        <!-- <ng-container matColumnDef="webUrl">
+          <mat-header-cell *matHeaderCellDef> Link </mat-header-cell>
+          <mat-cell *matCellDef="let row"> 
+            <a href="{{row.webUrl}}"> open in GitLab</a>
+          </mat-cell>
+        </ng-container> -->
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+    
+      <mat-paginator [pageSize]="15" [pageSizeOptions]="[5, 10, 15, 25, 100]"></mat-paginator>
+</div>
