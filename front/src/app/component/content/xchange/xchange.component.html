@@ -1,1 +1,33 @@
-<p>xchange works!</p>
+<fieldset class="fieldset">
+    <div class="example-container" [formGroup]="form">  
+      <mat-form-field appearance="outline">
+        <mat-label>Из</mat-label>
+        <mat-select formControlName="fromCurrency">
+          <mat-option *ngFor="let curr of currencies | async" [value]="curr">{{curr.charCode}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="fromAmount" type="number">
+      </mat-form-field>
+    </div>
+  
+    <div class="example-container" [formGroup]="form">  
+      <mat-form-field appearance="outline">
+        <mat-label>В</mat-label>
+        <mat-select formControlName="toCurrency">
+          <mat-option *ngFor="let curr of currencies | async" [value]="curr">{{curr.charCode}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" formControlName="toAmount">
+      </mat-form-field>
+    </div>
+</fieldset>
+
+<div class="example-button-row">
+    <button mat-raised-button (click)="exchange()">Конвертировать</button>
+</div>

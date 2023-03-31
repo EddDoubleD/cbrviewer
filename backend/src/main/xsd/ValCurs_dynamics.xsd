@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ValCursDynamics">
+		<xs:annotation>
+			<xs:documentation>Динамика официального курса заданной валюты</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="Record">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Nominal" type="xs:unsignedByte">
+								<xs:annotation>
+									<xs:documentation>номинал. ед</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Value" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>Значение</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Date" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Дата установления курса</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Id" type="xs:string" use="required">
+							<xs:annotation>
+								<xs:documentation>Внутренний уникальный код валюты</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="ID" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Запрашиваемый код валюты (внутренний код из справочника)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="DateRange1" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Запрашиваемая дата начала периода</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="DateRange2" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Запрашиваемая дата конца периода</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Имя документа</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,8 +1,7 @@
 package com.eddoubled.cbrviewer.controller;
 
-import com.eddoubled.cbrviewer.model.jaxb2.Valuta;
-import com.eddoubled.cbrviewer.service.CurrencyService;
-
+import com.eddoubled.cbrviewer.model.jaxb2.ValCurs;
+import com.eddoubled.cbrviewer.service.ConvertService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -21,29 +20,23 @@ import java.util.Optional;
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RestController
-@RequestMapping("api/v1/currency")
+@RequestMapping("api/v1/convert")
 @Slf4j
-public class CurrencyController {
+public class ConvertController {
 
-    CurrencyService currencyService;
+    ConvertService convertService;
 
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Valuta.Item>> getCurrency() {
-        return new ResponseEntity<>(currencyService.getCurrency(), HttpStatus.OK);
+    public ResponseEntity<List<ValCurs.Valute>> getAllCurrenciesRates() {
+        return new ResponseEntity<>(convertService.getAllCurrenciesRates(), HttpStatus.OK);
     }
 
     @GetMapping("{key}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<Valuta.Item> getCurrencyById(@PathVariable String key) {
-        Optional<Valuta.Item> currency = currencyService.findById(key);
-        if (currency.isPresent()) {
-            return new ResponseEntity<>(currency.get(), HttpStatus.OK);
-        }
-
-        log.info("currency with id = {} not found", key);
-        currency = currencyService.findByName(key);
-        return currency.map(item -> new ResponseEntity<>(item, HttpStatus.OK)).orElseGet(
-                () -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<ValCurs.Valute> getCurrencyRateByKey(@PathVariable String key) {
+        Optional<ValCurs.Valute> currenciesRates = convertService.findById(key);
+        return currenciesRates.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(()
+                -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

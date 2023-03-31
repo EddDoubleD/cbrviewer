@@ -1,5 +1,6 @@
 package com.eddoubled.cbrviewer.utils;
 
+import com.eddoubled.cbrviewer.model.jaxb2.ValCursDynamics;
 import lombok.experimental.UtilityClass;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;

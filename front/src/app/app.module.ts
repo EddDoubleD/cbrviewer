@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -15,12 +15,23 @@ import { XchangeComponent } from './component/content/xchange/xchange.component'
 import { DynamicComponent } from './component/content/dynamic/dynamic.component';
 import { CurencyCodeComponent } from './component/content/curency-code/curency-code.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DynamicChartComponent } from './component/wiget/dynamic-chart/dynamic-chart.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator' ;
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { MatMomentDateModule } from '@angular/material-moment-adapter'
+
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 @NgModule({
   declarations: [
@@ -30,19 +41,28 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     XchangeComponent,
     DynamicComponent,
-    CurencyCodeComponent
+    CurencyCodeComponent,
+    DynamicChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,  
     HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    HighchartsChartModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatCardModule,
+    MatProgressSpinnerModule 
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
