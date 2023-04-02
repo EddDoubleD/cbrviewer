@@ -2,7 +2,7 @@
   <div class="search-container">
     <mat-form-field appearance="outline" class="button-container">
       <mat-label>Выбор валюты</mat-label>
-      <mat-select formControlName="toCurrency">
+      <mat-select #matSelect multiple>
         <mat-option *ngFor="let curr of currencies | async" [value]="curr">{{curr.name}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -21,13 +21,18 @@
       <mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
     </mat-form-field>
     <div class="button-container">
-      <mat-spinner *ngIf="uploading" [diameter]="30"></mat-spinner>
-      <button mat-raised-button *ngIf="!uploading" (click)="loadDynamic()" style="margin: 1%">Поиск</button>
-  </div>
+      <!-- <mat-spinner *ngIf="uploading" [diameter]="30"></mat-spinner> -->
+      <button mat-raised-button (click)="loadDynamic()" style="margin: 1%">Поиск</button>
+    </div>
   </div>
 </mat-card>
 
 
-<div class="diagram" fxFlex="100">
-  <app-dynamic-chart [data]="data"></app-dynamic-chart>
+<div *ngIf="!uploading" class="diagram" fxFlex="100">
+  <highcharts-chart 
+    [Highcharts]="Highcharts"
+    [constructorType]="'stockChart'"
+    [options]="chartOptions" 
+    style="width: 100%; display: block;">
+</highcharts-chart>
 </div>

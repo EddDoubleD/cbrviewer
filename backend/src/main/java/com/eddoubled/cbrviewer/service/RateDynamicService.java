@@ -53,7 +53,7 @@ public class RateDynamicService {
         });
 
         ValCursDynamics valCursDynamics = dynamics.get();
-        final DynamicsResponse result = new DynamicsResponse(valCursDynamics.getName());
+        final DynamicsResponse result = new DynamicsResponse(id);
         valCursDynamics.getRecord()
                 .forEach(record -> {
                     Date time = DateUtils.parseNormal(record.getDate());

@@ -1,7 +1,6 @@
 package com.eddoubled.cbrviewer.controller;
 
 import com.eddoubled.cbrviewer.model.dto.response.dynamics.DynamicsResponse;
-import com.eddoubled.cbrviewer.model.jaxb2.ValCursDynamics;
 import com.eddoubled.cbrviewer.service.RateDynamicService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -27,15 +29,20 @@ public class RateDynamicController {
 
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<DynamicsResponse> getDynamic(@RequestParam String from,
-                                                       @RequestParam String to,
-                                                       @RequestParam String id) {
-        try {
-            return new ResponseEntity<>(rateDynamicService.getDynamics(from, to, id), HttpStatus.OK);
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        }
+    public ResponseEntity<List<DynamicsResponse>> getDynamics(@RequestParam String from,
+                                                              @RequestParam String to,
+                                                              @RequestParam String id) {
 
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        final List<DynamicsResponse> result = new ArrayList<>();
+        List<String> ids = Arrays.asList(id.split(","));
+        ids.forEach(i -> {
+            try {
+                result.add(rateDynamicService.getDynamics(from, to, i));
+            } catch (IOException e) {
+                log.error(e.getMessage(), e);
+            }
+        });
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

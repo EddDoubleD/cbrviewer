@@ -29,10 +29,16 @@ public class DynamicsResponse {
      */
     List<Number[]> data = new ArrayList<>();
 
+
     public DynamicsResponse(String name) {
         this.name = name;
     }
 
+    /**
+     * Добавление курса валюты на заданную дату
+     * @param time дата
+     * @param rate курс валюты на дату time
+     */
     public void addTimeRate(Long time, BigDecimal rate) {
         data.add(new Number[] {time, rate});
     }

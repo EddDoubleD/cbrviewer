@@ -15,7 +15,6 @@ import { XchangeComponent } from './component/content/xchange/xchange.component'
 import { DynamicComponent } from './component/content/dynamic/dynamic.component';
 import { CurencyCodeComponent } from './component/content/curency-code/curency-code.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DynamicChartComponent } from './component/wiget/dynamic-chart/dynamic-chart.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator' ;
@@ -41,8 +40,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     HomeComponent,
     XchangeComponent,
     DynamicComponent,
-    CurencyCodeComponent,
-    DynamicChartComponent
+    CurencyCodeComponent
   ],
   imports: [
     BrowserModule,
