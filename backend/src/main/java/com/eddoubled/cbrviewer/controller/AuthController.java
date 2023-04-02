@@ -3,9 +3,9 @@ package com.eddoubled.cbrviewer.controller;
 import com.eddoubled.cbrviewer.model.ERole;
 import com.eddoubled.cbrviewer.model.Role;
 import com.eddoubled.cbrviewer.model.User;
+import com.eddoubled.cbrviewer.model.dto.request.LoginRequest;
 import com.eddoubled.cbrviewer.model.dto.request.SignupRequest;
 import com.eddoubled.cbrviewer.model.dto.response.JwtResponse;
-import com.eddoubled.cbrviewer.model.dto.request.LoginRequest;
 import com.eddoubled.cbrviewer.model.dto.response.MessageResponse;
 import com.eddoubled.cbrviewer.repository.RoleRepository;
 import com.eddoubled.cbrviewer.repository.UserRepository;
@@ -13,17 +13,16 @@ import com.eddoubled.cbrviewer.service.security.jwt.JwtUtils;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -126,6 +125,9 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
-
-
+    @GetMapping("/check-jwt")
+    @PreAuthorize("isFullyAuthenticated()")
+    public ResponseEntity<HttpStatus> checkJwt() {
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
 }
