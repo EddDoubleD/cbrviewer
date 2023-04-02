@@ -1,4 +1,5 @@
 # Front
+![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
 
 This project is working on [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
 
