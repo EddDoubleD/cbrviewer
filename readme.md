@@ -3,6 +3,7 @@
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+
 Конвертер валют, который работает с рестами сайта ЦБРФ
 
 ## Функции
@@ -12,9 +13,9 @@
 4. Динамика курсов валют по заданной дате
 
 ## Build and start
-backend:
-frontend: 
-start mongo-db:
+- [frontend](https://github.com/EddDoubleD/cbrviewer/blob/master/front/README.md)
+- [backend](https://github.com/EddDoubleD/cbrviewer/blob/master/backend/readme.md)
+- start mongo-db:
 ```
 docker-compose up -d
 ```
